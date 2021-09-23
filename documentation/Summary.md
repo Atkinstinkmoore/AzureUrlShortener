@@ -4,6 +4,8 @@
 - Anna-Maria Phalén
 - Niclas Selvad
 
+## Klient
+swa- vanilla html - js
 
 Första-sidan ska innehålla en login-knapp om en inte är inloggad
 
@@ -16,12 +18,11 @@ När en är inloggad ska en kunna göra följande:
 
 
 
-Funktionalitet: Lägg till en url till en table, får tillbaka en endpoint (vår_url/1)
+## Funktionalitet 
 
-När en går till vår endpoint så redirectas en till riktiga urlen.
+När en går till vår endpoint så redirectas en till riktiga urlen. via HTTPTrigger
 
-
-
+## Persistensmedium
 En table ska bestå av följande kolumner: created (date), nr of clicks, indexerade columner: url, endpoint (id)
 
 
