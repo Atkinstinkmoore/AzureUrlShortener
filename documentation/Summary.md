@@ -1,6 +1,6 @@
 # Urlshortener: projekt
 
-- Leili Mänder
+- [x] Leili Mänder
 - Anna-Maria Phalén
 - Niclas Selvad
 
