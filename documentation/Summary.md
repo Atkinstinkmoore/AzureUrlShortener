@@ -1,8 +1,8 @@
 # Urlshortener: projekt
 
 - [x] Leili Mänder
-- Anna-Maria Phalén
-- Niclas Selvad
+- [ ]Anna-Maria Phalén
+- [ ]Niclas Selvad
 
 ## Klient
 swa- vanilla html - js
