@@ -1,0 +1,22 @@
+{
+    "routes": [
+
+        {
+            "route": "/login-github",
+            "redirect": "/.auth/login/github?post_login_redirect_uri=http://localhost:4280/min-sida"
+        },
+        {
+            "route": "/min-sida",
+            "rewrite": "account.html",
+            "allowedRoles": ["authenticated"]
+        },
+        {
+            "route": "/logout",
+            "redirect": "/.auth/logout"
+        },
+        {
+            "route": "/",
+            "rewrite": "index.html"
+        }
+    ]
+}
