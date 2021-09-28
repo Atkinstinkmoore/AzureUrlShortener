@@ -1,0 +1,99 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  box-sizing: border-box;
+}
+:root {
+  --primary: rgb(175, 45, 210);
+  --secondary: rgb(61, 155, 35);
+  --secondary-bright: rgb(80, 210, 45);
+  --off-white: #f8f8f8;
+}
+body {
+  background: var(--off-white);
+}
+
+/* Header starts here */
+header {
+  width: 100%;
+  background: var(--primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 0 20px -10px #111;
+}
+
+#name {
+  color: var(--off-white);
+  font-size: 2.1rem;
+}
+
+.btn {
+  text-decoration: none;
+  background: var(--secondary);
+  padding: 0.5em 1em;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 0.2em;
+  color: var(--off-white);
+  border: 1px solid var(--off-white);
+  text-shadow: 0 0 4px #000;
+}
+
+.btn:hover {
+  background: var(--off-white);
+  color: var(--secondary);
+  border-color: #000;
+  text-shadow: 0 0 4px #eee;
+}
+
+.btn:active {
+  box-shadow: inset 0 0 15px -5px #111;
+}
+
+/* Body starts here */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10rem;
+}
+
+.login {
+  padding: 2rem 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 5px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+.login-header {
+  color: var(--primary);
+  text-decoration: underline;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+}
+
+.login-btn {
+  border: 2px solid var(--secondary);
+  color: var(--secondary);
+  text-decoration: none;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  font-weight: 600;
+  font-size: 1.2rem;
+  background: var(--off-white);
+  box-shadow: 0 0 15px -10px #111;
+}
+
+.login-btn:active {
+  box-shadow: inset 0 0 15px -5px #111;
+}
+/* Forms start here */
+
+/* Footer starts here */
