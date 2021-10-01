@@ -12,6 +12,7 @@ using System.Security.Claims;
 using Microsoft.Azure.Documents.Client;
 using System.Linq;
 using Microsoft.Azure.Documents;
+using Microsoft.Azure.Documents.Linq;
 
 namespace api
 {
@@ -24,14 +25,25 @@ namespace api
                 databaseName: "UrlShortener",
                 collectionName: "UrlTables",
                 ConnectionStringSetting = "CosmosDBConnection"
-            )] IEnumerable<UrlTable> tables,
+            )] DocumentClient client,
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
-            var result = tables.Where(t => t.CreatedBy == req.Query["userName"]).ToList();
+            string name = req.Query["userName"];
 
-            if (result == null || result.Count == 0)
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                return new NotFoundResult();
+            }
+
+            var option = new FeedOptions { EnableCrossPartitionQuery = true };
+            Uri urlCollectionUri = UriFactory.CreateDocumentCollectionUri("UrlShortener", "UrlTables");
+
+            var result = client.CreateDocumentQuery<UrlTable>(urlCollectionUri, option).AsEnumerable().Where(t => t.CreatedBy == name).ToList();
+
+
+            if (result == null || result.ToList().Count == 0)
             {
                 return new NotFoundResult();
             }
