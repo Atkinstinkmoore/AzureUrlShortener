@@ -13,7 +13,7 @@
       <a class="btn" href="/logout">Logga ut</a>
     </header>
     <main id="root">
-      
+      <div id="user-urls"></div>
     </main>
   </body>
   <script>
@@ -24,5 +24,19 @@
       let heading = document.querySelector("#name");
       heading.innerText = data.clientPrincipal.userDetails;
     })();
+
+    getStats();
+
+    async function getStats() {
+      let nameResponse = await fetch("/.auth/me");
+      let name = await nameResponse.json();
+
+      let response = await fetch(
+        `/api/getUrlStats?userName=${name.clientPrincipal.userDetails}`
+      );
+      let data = await response.json();
+
+      console.log(data);
+    }
   </script>
 </html>
