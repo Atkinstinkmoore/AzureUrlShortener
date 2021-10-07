@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/styles.css" />
+    <script src="./js/display-name.js" defer></script>
+    <script src="./js/account-stats.js" defer></script>
     <title>Document</title>
   </head>
   <body>
@@ -16,53 +18,4 @@
       <div id="user-urls"></div>
     </main>
   </body>
-  <script>
-    (async function () {
-      const response = await fetch("/.auth/me");
-      const data = await response.json();
-
-      let heading = document.querySelector("#name");
-      heading.innerText = data.clientPrincipal.userDetails;
-    })();
-
-    getStats();
-
-    async function getStats() {
-      let nameResponse = await fetch("/.auth/me");
-      let name = await nameResponse.json();
-
-      let response = await fetch(
-        `/api/getUrlStats?userName=${name.clientPrincipal.userDetails}`
-      );
-      if (response.status === 200) {
-        let data = await response.json();
-        displayStats(await data);
-      } else if (response.status === 404) {
-        let root = document.querySelector("#user-urls");
-        root.innerHTML = "";
-        let heading = document.createElement("h2");
-        heading.textContent = "Inga URL:er att visa";
-        root.appendChild(heading);
-      }
-    }
-
-    function displayStats(data) {
-      let root = document.querySelector("#user-urls");
-      root.innerHTML = "";
-      let heading = document.createElement("h2");
-      heading.classList.add = "user-urls-heading";
-      heading.textContent = "Dina Skapade URL:er";
-      root.appendChild(heading);
-
-      let urls = document.createElement("div");
-
-      for (let i = 0; i < data.length; i++) {
-        let statText = document.createElement("p");
-        statText.textContent = `Id: ${data[i].id}, Url: ${data[i].longUrl}, Skapades: ${data[i].createdAt}, Antal klick: ${data[i].timesClicked}`;
-        urls.appendChild(statText);
-      }
-
-      root.appendChild(urls);
-    }
-  </script>
 </html>
