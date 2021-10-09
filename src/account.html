@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./css/styles.css" />
     <script src="./js/display-name.js" defer></script>
     <script src="./js/account-stats.js" defer></script>
+    <script src="./js/save-url.js" defer></script>
     <title>Document</title>
   </head>
   <body>
@@ -15,15 +16,12 @@
       <a class="btn" href="/logout">Logga ut</a>
     </header>
     <main id="root">
-      <div id="user-urls"></div>
-    </main>
-
     <form>
       <label for="longUrl">longUrl</label>
       <input type="text" id="longUrl" placeholder="www.google.com">
       <button type="submit" id="saveButton" name="saveUrl">Save Url</button>
     </form>
-
-
+    <div id="user-urls"></div>
+    </main>
   </body>
 </html>
