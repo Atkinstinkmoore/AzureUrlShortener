@@ -16,12 +16,15 @@
       <a class="btn" href="/logout">Logga ut</a>
     </header>
     <main id="root">
-    <form>
-      <label for="longUrl">longUrl</label>
-      <input type="text" id="longUrl" placeholder="www.google.com">
-      <button type="submit" id="saveButton" name="saveUrl">Save Url</button>
-    </form>
-    <div id="user-urls"></div>
+      <form class="url-form">
+        <input
+          type="text"
+          id="longUrl"
+          placeholder="Skriv in en Url att spara.."
+        />
+        <button type="submit" id="saveButton" name="saveUrl">Save Url</button>
+      </form>
+      <div id="user-urls"></div>
     </main>
   </body>
 </html>
