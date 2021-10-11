@@ -40,6 +40,8 @@ namespace api
             {
                 return new NotFoundResult();
             }
+            result.timesClicked += 1;
+            var updatedResult = (await client.UpsertDocumentAsync(urlCollectionUri, result)).StatusCode;
 
             return new RedirectResult(result.longUrl, true);
         }
