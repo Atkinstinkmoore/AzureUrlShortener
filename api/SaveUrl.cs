@@ -21,16 +21,16 @@ namespace api.SaveUrl
     {
         [FunctionName("SaveUrl")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
-             [CosmosDB(databaseName: "UrlShortener", collectionName: "UrlTables", 
+            [HttpTrigger(AuthorizationLevel.User, "get", "post", Route = null)] HttpRequest req,
+             [CosmosDB(databaseName: "UrlShortener", collectionName: "UrlTables",
                        ConnectionStringSetting = "CosmosDBConnection")]DocumentClient client,
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
-            
+
             //läs och deserialisera request body
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-           
+
             //om requestbody är tom, fucka the fuck out
             if (requestBody == null)
             {
@@ -38,7 +38,7 @@ namespace api.SaveUrl
             }
 
             dynamic data = JsonConvert.DeserializeObject(requestBody);
-            
+
             string name = data.CreatedBy;
             string url = data.LongUrl;
 
@@ -65,11 +65,11 @@ namespace api.SaveUrl
 
                     var response = (await client.CreateDocumentAsync(urlCollectionUri, tableRow)).StatusCode;
 
-                
+
                     if (response == HttpStatusCode.Created)
                         return new OkResult();
                 }
-           
+
                 return new NotFoundResult();
 
         }
