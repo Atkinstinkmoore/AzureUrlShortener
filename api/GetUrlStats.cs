@@ -40,7 +40,7 @@ namespace api
             var option = new FeedOptions { EnableCrossPartitionQuery = true };
             Uri urlCollectionUri = UriFactory.CreateDocumentCollectionUri("UrlShortener", "UrlTables");
 
-            var result = client.CreateDocumentQuery<UrlTable>(urlCollectionUri, option).AsEnumerable().Where(t => t.CreatedBy == name).ToList();
+            var result = client.CreateDocumentQuery<UrlTable>(urlCollectionUri, option).AsEnumerable().Where(t => t.createdBy == name).ToList();
 
 
             if (result == null || result.ToList().Count == 0)

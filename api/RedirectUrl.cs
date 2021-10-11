@@ -34,14 +34,14 @@ namespace api
             var option = new FeedOptions { EnableCrossPartitionQuery = true };
             Uri urlCollectionUri = UriFactory.CreateDocumentCollectionUri("UrlShortener", "UrlTables");
 
-            var result = client.CreateDocumentQuery<UrlTable>(urlCollectionUri, option).AsEnumerable().SingleOrDefault(u => u.Id == shortUrl);
+            var result = client.CreateDocumentQuery<UrlTable>(urlCollectionUri, option).AsEnumerable().SingleOrDefault(u => u.id == shortUrl);
 
-            if (result == null || result.LongUrl == "")
+            if (result == null || result.longUrl == "")
             {
                 return new NotFoundResult();
             }
 
-            return new RedirectResult(result.LongUrl, true);
+            return new RedirectResult(result.longUrl, true);
         }
     }
 }

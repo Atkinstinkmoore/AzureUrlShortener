@@ -54,11 +54,11 @@ namespace api.SaveUrl
 
                     //skapa upp TR
                     UrlTable tableRow = new UrlTable{
-                        Id = (result +1).ToString(),
-                        LongUrl = data.LongUrl,
-                        CreatedBy = data.CreatedBy,
-                        CreatedAt = DateTimeOffset.Now,
-                        TimesClicked = 0
+                        id = (result +1).ToString(),
+                        longUrl = data.LongUrl,
+                        createdBy = data.CreatedBy,
+                        createdAt = DateTimeOffset.Now,
+                        timesClicked = 0
                     };
 
                     //skriv tableRow till DB
