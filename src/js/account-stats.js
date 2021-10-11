@@ -85,7 +85,7 @@ function displayStats(data) {
     const host = window.location.hostname;
     shortUrl.textContent = `Fökortad Url: `;
     let link = document.createElement("a");
-    const url = `http://${host}:4280/${data[i].id}`;
+    const url = `http://${host}:4280/api/HttpRedirect?Id=${data[i].id}`;
     link.href = url;
     link.textContent = url;
 
